@@ -19,6 +19,18 @@ describe "Enumerable" do
     @reimplements_enumerable = ReimplementEnumerable.new(@books)
   end
 
+  it "implements select correctly" do
+    short_books = [@h2g2, @pride]
+
+    assert_equal short_books, @reimplements_enumerable.select { |book| book.page_count < 500 }
+  end
+
+  it "implements count correctly" do
+    results = @reimplements_enumerable.count { |book| book.page_count > 300 }
+
+    assert_equal 3, results
+  end
+
   it "implements all? correctly when results are true" do
     skip
     results = @reimplements_enumerable.all? { |book| book.year > 1800 }
@@ -33,12 +45,6 @@ describe "Enumerable" do
     assert_equal false, results
   end
 
-  it "implements count correctly" do
-    skip
-    results = @reimplements_enumerable.count { |book| book.page_count > 300 }
-
-    assert_equal 3, results
-  end
 
   it "implements count correctly" do
     skip

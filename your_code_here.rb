@@ -13,9 +13,20 @@ class ReimplementEnumerable
       end
     end
 
-    return result
+    result
   end
 
+  def count
+    result = []
+
+    @collection.each do |element|
+      if yield(element)
+        result << element
+      end
+    end
+
+    result.count
+  end
   # The rest of the code for all the enumerables
   # you must write go here
 end
