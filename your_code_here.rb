@@ -18,5 +18,4 @@ class ReimplementEnumerable
 
   # The rest of the code for all the enumerables
   # you must write go here
-  # TESTTETSET
 end
