@@ -27,6 +27,28 @@ class ReimplementEnumerable
 
     result.count
   end
+
+  def all?
+
+    @collection.each do |element|
+      unless yield(element)
+        return false
+      end
+    end
+
+    true
+  end
+
+  def find
+
+    @collection.each do |element|
+      if yield(element)
+        return element
+      end
+    end
+
+    nil
+  end
   # The rest of the code for all the enumerables
   # you must write go here
 end
