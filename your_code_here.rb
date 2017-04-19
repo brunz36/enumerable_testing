@@ -6,10 +6,10 @@ class ReimplementEnumerable
   def select
     result = []
 
-    @collection.each do |book|
-      should_select = yield(book)
+    @collection.each do |element|
+      should_select = yield(element)
       if should_select
-        result << book
+        result << element
       end
     end
 
@@ -19,9 +19,9 @@ class ReimplementEnumerable
   def count
     result = []
 
-    @collection.each do |book|
-      if yield(book)
-        result << book
+    @collection.each do |element|
+      if yield(element)
+        result << element
       end
     end
 
@@ -30,8 +30,8 @@ class ReimplementEnumerable
 
   def all?
 
-    @collection.each do |book|
-      unless yield(book)
+    @collection.each do |element|
+      unless yield(element)
         return false
       end
     end
@@ -41,9 +41,9 @@ class ReimplementEnumerable
 
   def find
 
-    @collection.each do |book|
-      if yield(book)
-        return book
+    @collection.each do |element|
+      if yield(element)
+        return element
       end
     end
 
@@ -53,8 +53,8 @@ class ReimplementEnumerable
   def each_with_index
     index = 0
 
-    @collection.each do |book|
-      yield(book, index)
+    @collection.each do |element|
+      yield(element, index)
       index += 1
     end
 
@@ -64,9 +64,9 @@ class ReimplementEnumerable
     counter = 0
     array = []
 
-    @collection.each do |book|
+    @collection.each do |element|
       if counter >= arg
-        array << book
+        array << element
       end
       counter += 1
     end
@@ -92,12 +92,25 @@ class ReimplementEnumerable
   def find_index
     results = 0
 
-    @collection.each do |book|
-      if yield(book)
+    @collection.each do |element|
+      if yield(element)
         return results
       end
       results += 1
     end
+  end
+
+  def include?(element_in)
+
+    @collection.each do |element|
+      if element == element_in
+        return true
+      else
+        return false
+      end
+    end
+
+
   end
   # The rest of the code for all the enumerables
   # you must write go here
