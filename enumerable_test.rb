@@ -159,6 +159,12 @@ describe "Enumerable" do
     assert_equal [[@h2g2, @pride], [@war_and_peace, @moby_dick]], array
   end
 
-  # one?
+  it "implements one? correctly" do
+
+    array = @reimplements_enumerable.one? {|book| book.year == 1979}
+
+    assert_equal true, array
+  end
+
   # none?
 end

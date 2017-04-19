@@ -169,21 +169,29 @@ class ReimplementEnumerable
   end
 
   def partition
-    short_books = []
-    long_books = []
+    true_array = []
+    false_array = []
 
     @collection.each do |element|
       if yield(element)
-        short_books << element
+        true_array << element
       else
-        long_books << element
+        false_array << element
       end
     end
 
-    return [short_books, long_books]
+    return [true_array, false_array]
   end
 
+  def one?
 
+    @collection.each do |element|
+      if element
+        return true
+      end
+    end
+
+  end
   # The rest of the code for all the enumerables
   # you must write go here
 end
