@@ -74,20 +74,15 @@ class ReimplementEnumerable
 
   end
 
-  # def drop_while
-  #   # results = []
-  #   # results_x = []
-  #   #
-  #   # @collection.each do |book|
-  #   #   while yield(book)
-  #   #     results_x << book
-  #   #     next
-  #   #   end
-  #   #   results << book
-  #   # end
-  #   #
-  #   # results
-  # end
+  def drop_while
+    each_with_index do |element, index|
+      unless yield(element)
+        return @collection[index..-1]
+      end
+    end
+
+    return []
+  end
 
   def find_index
     results = 0

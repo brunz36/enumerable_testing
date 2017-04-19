@@ -85,7 +85,7 @@ describe "Enumerable" do
   end
 
   it "implements drop_while correctly" do
-    skip
+    # skip
     results = @reimplements_enumerable.drop_while { |book| book.year < 1900 }
 
     assert_equal [@h2g2, @moby_dick, @pride], results
