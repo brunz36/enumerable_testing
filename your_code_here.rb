@@ -75,18 +75,18 @@ class ReimplementEnumerable
   end
 
   # def drop_while
-  #   results = []
-  #   results_x = []
-  #
-  #   @collection.each do |book|
-  #     while yield(book)
-  #       results_x << book
-  #       next
-  #     end
-  #     results << book
-  #   end
-  #
-  #   results
+  #   # results = []
+  #   # results_x = []
+  #   #
+  #   # @collection.each do |book|
+  #   #   while yield(book)
+  #   #     results_x << book
+  #   #     next
+  #   #   end
+  #   #   results << book
+  #   # end
+  #   #
+  #   # results
   # end
 
   def find_index
@@ -146,6 +146,18 @@ class ReimplementEnumerable
     end
 
     results
+  end
+
+  def reject
+    short_books = []
+
+    @collection.each do |book|
+      if book.page_count < 500
+        short_books << book
+      end
+    end
+
+    short_books
   end
 
   # The rest of the code for all the enumerables
