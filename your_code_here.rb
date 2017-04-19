@@ -151,9 +151,10 @@ class ReimplementEnumerable
   def reject
     short_books = []
 
-    @collection.each do |book|
-      if book.page_count < 500
-        short_books << book
+    @collection.each do |element|
+      book = yield(element)
+      unless book
+        short_books << element
       end
     end
 

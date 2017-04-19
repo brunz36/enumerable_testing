@@ -84,12 +84,12 @@ describe "Enumerable" do
     assert_equal [@moby_dick, @pride], @reimplements_enumerable.drop(2)
   end
 
-  # it "implements drop_while correctly" do
-  #   skip
-  #   results = @reimplements_enumerable.drop_while { |book| book.year < 1900 }
-  #
-  #   assert_equal [@h2g2, @moby_dick, @pride], results
-  # end
+  it "implements drop_while correctly" do
+    skip
+    results = @reimplements_enumerable.drop_while { |book| book.year < 1900 }
+
+    assert_equal [@h2g2, @moby_dick, @pride], results
+  end
 
   it "implements find index correctly when there is a match" do
     results = @reimplements_enumerable.find_index { |book| book.year == 1851 }
