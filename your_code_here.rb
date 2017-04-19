@@ -135,6 +135,19 @@ class ReimplementEnumerable
     results
   end
 
+  def min_by
+    results = ""
+    min_year = 999999999999
+    @collection.each do |element|
+      if element.year < min_year
+        min_year = element.year
+        results = element
+      end
+    end
+
+    results
+  end
+
   # The rest of the code for all the enumerables
   # you must write go here
 end
