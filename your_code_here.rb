@@ -49,6 +49,16 @@ class ReimplementEnumerable
 
     nil
   end
+
+  def each_with_index
+    index = 0
+
+    @collection.each do |book|
+      yield(book, index)
+      index += 1
+    end
+
+  end
   # The rest of the code for all the enumerables
   # you must write go here
 end

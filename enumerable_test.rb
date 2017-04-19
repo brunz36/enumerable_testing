@@ -68,7 +68,7 @@ describe "Enumerable" do
   end
 
   it "implements each_with_index correctly" do
-    skip
+    # skip
     object_results = []
     index_results = []
 
