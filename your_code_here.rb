@@ -110,8 +110,31 @@ class ReimplementEnumerable
       end
     end
 
-
   end
+
+  def map
+    results = []
+
+    @collection.each do |element|
+      results << element.year
+    end
+
+    results
+  end
+
+  def max_by
+    results = ""
+    max_year = 0
+    @collection.each do |element|
+      if element.year > max_year
+        max_year = element.year
+        results = element
+      end
+    end
+
+    results
+  end
+
   # The rest of the code for all the enumerables
   # you must write go here
 end
