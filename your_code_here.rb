@@ -156,6 +156,17 @@ class ReimplementEnumerable
     short_books
   end
 
+  def reverse_each
+    results = @collection.reverse
+
+    # Yield each element in reverse
+    results.each do |element|
+      yield element
+    end
+
+    # Return the reversed array
+    results
+  end
   # The rest of the code for all the enumerables
   # you must write go here
 end

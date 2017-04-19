@@ -85,7 +85,6 @@ describe "Enumerable" do
   end
 
   it "implements drop_while correctly" do
-    # skip
     results = @reimplements_enumerable.drop_while { |book| book.year < 1900 }
 
     assert_equal [@h2g2, @moby_dick, @pride], results
@@ -141,7 +140,23 @@ describe "Enumerable" do
     assert_equal short_books, @reimplements_enumerable.reject { |book| book.page_count > 500 }
   end
 
-  # reverse_each
+  it "implements reverse_each correctly" do
+    results = [@pride, @moby_dick, @h2g2, @war_and_peace]
+
+    # @reimplements_enumerable.reverse_each do |book|
+    #   puts "The book is #{book.title}"
+    # end
+    #
+    # Gavin instructions
+
+    assert_equal results, @reimplements_enumerable.reverse_each { |book| book }
+  end
+
+  it "implements partition correctly" do
+    
+  end
+
+
   # partition
   # one?
   # none?
