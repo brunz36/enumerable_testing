@@ -167,6 +167,23 @@ class ReimplementEnumerable
     # Return the reversed array
     results
   end
+
+  def partition
+    short_books = []
+    long_books = []
+
+    @collection.each do |element|
+      if yield(element)
+        short_books << element
+      else
+        long_books << element
+      end
+    end
+
+    return [short_books, long_books]
+  end
+
+
   # The rest of the code for all the enumerables
   # you must write go here
 end

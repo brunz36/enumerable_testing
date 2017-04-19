@@ -153,11 +153,12 @@ describe "Enumerable" do
   end
 
   it "implements partition correctly" do
-    
+
+    array = @reimplements_enumerable.partition {|book| book.page_count < 500}
+
+    assert_equal [[@h2g2, @pride], [@war_and_peace, @moby_dick]], array
   end
 
-
-  # partition
   # one?
   # none?
 end
