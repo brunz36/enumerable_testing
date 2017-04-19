@@ -6,10 +6,10 @@ class ReimplementEnumerable
   def select
     result = []
 
-    @collection.each do |element|
-      should_select = yield(element)
+    @collection.each do |book|
+      should_select = yield(book)
       if should_select
-        result << element
+        result << book
       end
     end
 
@@ -19,9 +19,9 @@ class ReimplementEnumerable
   def count
     result = []
 
-    @collection.each do |element|
-      if yield(element)
-        result << element
+    @collection.each do |book|
+      if yield(book)
+        result << book
       end
     end
 
@@ -30,8 +30,8 @@ class ReimplementEnumerable
 
   def all?
 
-    @collection.each do |element|
-      unless yield(element)
+    @collection.each do |book|
+      unless yield(book)
         return false
       end
     end
@@ -41,9 +41,9 @@ class ReimplementEnumerable
 
   def find
 
-    @collection.each do |element|
-      if yield(element)
-        return element
+    @collection.each do |book|
+      if yield(book)
+        return book
       end
     end
 
@@ -58,6 +58,46 @@ class ReimplementEnumerable
       index += 1
     end
 
+  end
+
+  def drop(arg)
+    counter = 0
+    array = []
+
+    @collection.each do |book|
+      if counter >= arg
+        array << book
+      end
+      counter += 1
+    end
+    array
+
+  end
+
+  # def drop_while
+  #   results = []
+  #   results_x = []
+  #
+  #   @collection.each do |book|
+  #     while yield(book)
+  #       results_x << book
+  #       next
+  #     end
+  #     results << book
+  #   end
+  #
+  #   results
+  # end
+
+  def find_index
+    results = 0
+
+    @collection.each do |book|
+      if yield(book)
+        return results
+      end
+      results += 1
+    end
   end
   # The rest of the code for all the enumerables
   # you must write go here
