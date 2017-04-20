@@ -201,6 +201,5 @@ class ReimplementEnumerable
     end
     true
   end
-  # The rest of the code for all the enumerables
-  # you must write go here
+
 end

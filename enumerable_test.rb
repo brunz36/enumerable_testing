@@ -153,23 +153,21 @@ describe "Enumerable" do
   end
 
   it "implements partition correctly" do
-
     array = @reimplements_enumerable.partition {|book| book.page_count < 500}
 
     assert_equal [[@h2g2, @pride], [@war_and_peace, @moby_dick]], array
   end
 
   it "implements one? correctly" do
-
     array = @reimplements_enumerable.one? {|book| book.year == 1979}
 
     assert_equal true, array
   end
 
   it "implements none? correctly" do
-
     array = @reimplements_enumerable.none? {|book| book.year == 1999}
 
     assert_equal true, array
   end
+
 end
