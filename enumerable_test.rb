@@ -166,5 +166,10 @@ describe "Enumerable" do
     assert_equal true, array
   end
 
-  # none?
+  it "implements none? correctly" do
+
+    array = @reimplements_enumerable.none? {|book| book.year == 1999}
+
+    assert_equal true, array
+  end
 end

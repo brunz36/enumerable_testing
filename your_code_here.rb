@@ -186,11 +186,20 @@ class ReimplementEnumerable
   def one?
 
     @collection.each do |element|
-      if element
+      if yield(element)
         return true
       end
     end
+  end
 
+  def none?
+
+    @collection.each do |element|
+      if yield(element)
+        return false
+      end
+    end
+    true
   end
   # The rest of the code for all the enumerables
   # you must write go here
