@@ -1,3 +1,5 @@
+require 'awesome_print'
+
 class ReimplementEnumerable
   def initialize(collection)
     @collection = collection
@@ -111,60 +113,66 @@ class ReimplementEnumerable
     results = []
 
     @collection.each do |element|
-      results << element.year
+      should_map = yield(element)
+      if should_map
+        results << should_map
+      end
     end
 
     results
   end
 
   def max_by
-    results = ""
-    max_year = 0
+    results = []
+    max_variable = 0
+
     @collection.each do |element|
-      if element.year > max_year
-        max_year = element.year
-        results = element
+      should_max = yield(element)
+      if should_max > max_variable
+        max_variable = should_max
+        results.pop
+        results << element
       end
     end
 
-    results
+    results[0]
   end
 
   def min_by
-    results = ""
-    min_year = 999999999999
+    results = []
+    min_array = []
+
     @collection.each do |element|
-      if element.year < min_year
-        min_year = element.year
-        results = element
+      min_array << yield(element)
+      if min_array[0] > min_array[-1]
+        min_array.pop
+        results.pop
+        results << element
       end
     end
 
-    results
+    results[0]
   end
 
   def reject
-    short_books = []
+    true_variables = []
 
     @collection.each do |element|
-      book = yield(element)
-      unless book
-        short_books << element
+      variable = yield(element)
+      unless variable
+        true_variables << element
       end
     end
-
-    short_books
+    true_variables
   end
 
   def reverse_each
-    results = @collection.reverse
+    results = []
 
-    # Yield each element in reverse
-    results.each do |element|
-      yield element
+    @collection.each do |element|
+      results.insert(0, element)
     end
 
-    # Return the reversed array
     results
   end
 

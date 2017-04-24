@@ -143,12 +143,6 @@ describe "Enumerable" do
   it "implements reverse_each correctly" do
     results = [@pride, @moby_dick, @h2g2, @war_and_peace]
 
-    # @reimplements_enumerable.reverse_each do |book|
-    #   puts "The book is #{book.title}"
-    # end
-    #
-    # Gavin instructions
-
     assert_equal results, @reimplements_enumerable.reverse_each { |book| book }
   end
 
